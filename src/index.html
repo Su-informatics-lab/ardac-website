@@ -431,8 +431,14 @@ margin-left:0in;background:white'><b><span style='font-size:
         });
 
         // Hide navigation when clicking outside of it
+        // document.addEventListener('click', function(e) {
+        //     if (!navigation.contains(e.target) && !mobileIcon.contains(e.target) && navigation.style.display === "flex") {
+        //         navigation.style.display = "none";
+        //     }
+        // });
         document.addEventListener('click', function(e) {
-            if (!navigation.contains(e.target) && !mobileIcon.contains(e.target) && navigation.style.display === "flex") {
+            let isMobileView = window.innerWidth <= 768;
+            if (isMobileView && !navigation.contains(e.target) && !mobileIcon.contains(e.target) && navigation.style.display === "flex") {
                 navigation.style.display = "none";
             }
         });

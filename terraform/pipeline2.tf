@@ -1,56 +1,56 @@
 data "aws_iam_policy_document" "codebuild" {
-    statement {
-        effect = "Allow"
+  statement {
+    effect = "Allow"
 
-        resources = [
-            "arn:aws:logs:us-east-1:233907574649:log-group:/aws/codebuild/ardac-website",
-            "arn:aws:logs:us-east-1:233907574649:log-group:/aws/codebuild/ardac-website:*"
-        ]
+    resources = [
+      "arn:aws:logs:us-east-1:233907574649:log-group:/aws/codebuild/ardac-website",
+      "arn:aws:logs:us-east-1:233907574649:log-group:/aws/codebuild/ardac-website:*"
+    ]
 
-        actions = [
-            "logs:CreateLogGroup",
-            "logs:CreateLogStream",
-            "logs:PutLogEvents"
-        ]
-    }
+    actions = [
+      "logs:CreateLogGroup",
+      "logs:CreateLogStream",
+      "logs:PutLogEvents"
+    ]
+  }
 
-    statement {
-        effect = "Allow"
+  statement {
+    effect = "Allow"
 
-        resources = [
-            "arn:aws:s3:::codepipeline-us-east-1-*"
-        ]
+    resources = [
+      "arn:aws:s3:::codepipeline-us-east-1-*"
+    ]
 
-        actions = [
-            "s3:PutObject",
-            "s3:GetObject",
-            "s3:GetObjectVersion",
-            "s3:GetBucketAcl",
-            "s3:GetBucketLocation"
-        ]
-    }
+    actions = [
+      "s3:PutObject",
+      "s3:GetObject",
+      "s3:GetObjectVersion",
+      "s3:GetBucketAcl",
+      "s3:GetBucketLocation"
+    ]
+  }
 
-    statement {
-        effect = "Allow"
+  statement {
+    effect = "Allow"
 
-        resources = [
-            "arn:aws:codebuild:us-east-1:233907574649:report-group/ardac-website-*"
-        ]
+    resources = [
+      "arn:aws:codebuild:us-east-1:233907574649:report-group/ardac-website-*"
+    ]
 
-        actions = [
-            "codebuild:CreateReportGroup",
-            "codebuild:CreateReport",
-            "codebuild:UpdateReport",
-            "codebuild:BatchPutTestCases",
-            "codebuild:BatchPutCodeCoverages"
-        ]
-    }
+    actions = [
+      "codebuild:CreateReportGroup",
+      "codebuild:CreateReport",
+      "codebuild:UpdateReport",
+      "codebuild:BatchPutTestCases",
+      "codebuild:BatchPutCodeCoverages"
+    ]
+  }
 }
 
 resource "aws_iam_policy" "codebuild" {
-    name        = "CodeBuildBasePolicy-ardac-website-us-east-1"
-    description = "An example policy"
-    policy      = data.aws_iam_policy_document.codebuild.json
+  name        = "CodeBuildBasePolicy-ardac-website-us-east-1"
+  description = "An example policy"
+  policy      = data.aws_iam_policy_document.codebuild.json
 }
 
 data "aws_iam_policy_document" "assume_role" {
@@ -75,10 +75,10 @@ resource "aws_iam_role_policy_attachment" "codebuild_policy_attach" {
 }
 
 resource "aws_codebuild_project" "ardac_website" {
-  name          = "ardac-website"
-  description   = "Deploy ardac.org website to S3."
-  service_role  = "arn:aws:iam::233907574649:role/service-role/codebuild-ardac-website-service-role"
-  build_timeout = "15"
+  name           = "ardac-website"
+  description    = "Deploy ardac.org website to S3."
+  service_role   = "arn:aws:iam::233907574649:role/service-role/codebuild-ardac-website-service-role"
+  build_timeout  = "15"
   queued_timeout = "480"
 
   artifacts {
@@ -166,12 +166,12 @@ resource "aws_codepipeline" "codepipeline" {
     name = "Deploy"
 
     action {
-      name             = "Deploy"
-      category         = "Deploy"
-      owner            = "AWS"
-      provider         = "S3"
-      version          = "1"
-      input_artifacts  = ["BuildArtifact"]
+      name            = "Deploy"
+      category        = "Deploy"
+      owner           = "AWS"
+      provider        = "S3"
+      version         = "1"
+      input_artifacts = ["BuildArtifact"]
 
       configuration = {
         BucketName = "ardac.org"

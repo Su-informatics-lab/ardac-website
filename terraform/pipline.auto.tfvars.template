@@ -1,0 +1,6 @@
+config           = [""] #path to AWS config file, e.g. ~/.aws/config
+credentials      = [""] #path to AWS credentials file, e.g. ~/.aws/credentials
+profile          = "default" #name of AWS credentials profile
+region           = "us-east-1" #AWS region
+account          = "111122223333" #AWS account
+distribution     = "E1234567890" #CloudFront distribution ID

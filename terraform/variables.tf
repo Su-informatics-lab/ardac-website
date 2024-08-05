@@ -27,3 +27,23 @@ variable "distribution" {
   description = "CloudFront distribution ID"
   type        = string
 }
+
+variable "website_build_project" {
+  description = "Name of the CodeBuild project for the website"
+  type        = string
+}
+
+variable "invalidation_build_project" {
+  description = "Name of the CodeBuild project to clear the CloudFront cache"
+  type        = string
+}
+
+variable "repository" {
+  description = "Name of the GitHub repository (org/repo)"
+  type        = string
+}
+
+variable "codestar" {
+  description = "Name of the CodeStar connection"
+  type        = string
+}

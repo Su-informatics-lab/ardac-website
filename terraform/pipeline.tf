@@ -1,12 +1,16 @@
+data "aws_cloudfront_distribution" "distribution" {
+  id = var.distribution
+}
+
 data "aws_iam_policy_document" "codebuild" {
   statement {
     effect = "Allow"
 
     resources = [
-      "arn:aws:logs:us-east-1:233907574649:log-group:/aws/codebuild/${var.website_build_project}",
-      "arn:aws:logs:us-east-1:233907574649:log-group:/aws/codebuild/${var.website_build_project}:*",
-      "arn:aws:logs:us-east-1:233907574649:log-group:/aws/codebuild/${var.invalidation_build_project}",
-      "arn:aws:logs:us-east-1:233907574649:log-group:/aws/codebuild/${var.invalidation_build_project}:*"
+      "arn:aws:logs:${var.region}:${var.account}:log-group:/aws/codebuild/${var.website_build_project}",
+      "arn:aws:logs:${var.region}:${var.account}:log-group:/aws/codebuild/${var.website_build_project}:*",
+      "arn:aws:logs:${var.region}:${var.account}:log-group:/aws/codebuild/${var.invalidation_build_project}",
+      "arn:aws:logs:${var.region}:${var.account}:log-group:/aws/codebuild/${var.invalidation_build_project}:*"
     ]
 
     actions = [
@@ -20,7 +24,8 @@ data "aws_iam_policy_document" "codebuild" {
     effect = "Allow"
 
     resources = [
-      "arn:aws:s3:::codepipeline-us-east-1-*"
+      aws_s3_bucket.codepipeline_bucket.arn,
+      "${aws_s3_bucket.codepipeline_bucket.arn}/*"
     ]
 
     actions = [
@@ -56,7 +61,7 @@ data "aws_iam_policy_document" "codebuild" {
     ]
 
     resources = [
-      "arn:aws:cloudfront::233907574649:distribution/${var.distribution}"
+      data.aws_cloudfront_distribution.distribution.arn
     ]
   }
 }
@@ -91,7 +96,7 @@ resource "aws_iam_role_policy_attachment" "codebuild_policy_attach" {
 }
 
 resource "aws_codebuild_project" "ardac_website_deployment" {
-  name                   = "ardac-website"
+  name                   = var.website_build_project
   description            = "Deploy ardac.org website to S3."
   service_role           = aws_iam_role.codebuild_ardac_website_service_role.arn
   concurrent_build_limit = 1
@@ -99,7 +104,7 @@ resource "aws_codebuild_project" "ardac_website_deployment" {
 
   artifacts {
     type = "CODEPIPELINE"
-    name = "ardac-website"
+    name = var.website_build_project
   }
 
   environment {
@@ -133,20 +138,18 @@ EOT
 }
 
 resource "aws_codebuild_project" "ardac_website_invalidation" {
-  badge_enabled          = false
-  badge_url              = null
-  build_timeout          = 15
-  concurrent_build_limit = 1
-  description            = null
-  encryption_key         = "arn:aws:kms:us-east-1:233907574649:alias/aws/s3"
-  name                   = var.invalidation_build_project
-  project_visibility     = "PRIVATE"
-  public_project_alias   = null
-  resource_access_role   = null
-  service_role           = aws_iam_role.codebuild_ardac_website_service_role.arn
-  source_version         = null
-  tags                   = {}
-  tags_all               = {}
+  badge_enabled        = false
+  badge_url            = null
+  build_timeout        = 15
+  description          = null
+  name                 = var.invalidation_build_project
+  project_visibility   = "PRIVATE"
+  public_project_alias = null
+  resource_access_role = null
+  service_role         = aws_iam_role.codebuild_ardac_website_service_role.arn
+  source_version       = null
+  tags                 = {}
+  tags_all             = {}
 
   artifacts {
     artifact_identifier    = null
@@ -174,6 +177,12 @@ resource "aws_codebuild_project" "ardac_website_invalidation" {
     image_pull_credentials_type = "CODEBUILD"
     privileged_mode             = false
     type                        = "LINUX_LAMBDA_CONTAINER"
+
+    environment_variable {
+      name  = "CACHEID"
+      type  = "PLAINTEXT"
+      value = var.distribution
+    }
   }
 
   logs_config {
@@ -208,7 +217,8 @@ resource "aws_codebuild_project" "ardac_website_invalidation" {
 }
 
 resource "aws_iam_role" "codepipeline_role" {
-  name = "codepipeline_ardac_website_deployment_role"
+  name = "codepipeline-ardac-website-deployment-role"
+  path = "/service-role/"
 
   assume_role_policy = <<EOF
 {
@@ -237,7 +247,7 @@ data "aws_iam_policy_document" "codepipeline_policy" {
     ]
 
     resources = [
-      "arn:aws:s3:::codepipeline-us-east-1-597113427572/*"
+      "${aws_s3_bucket.codepipeline_bucket.arn}/*"
     ]
   }
 
@@ -251,7 +261,8 @@ data "aws_iam_policy_document" "codepipeline_policy" {
     ]
 
     resources = [
-      "arn:aws:codebuild:us-east-1:233907574649:project/ardac-website"
+      aws_codebuild_project.ardac_website_deployment.arn,
+      aws_codebuild_project.ardac_website_invalidation.arn
     ]
   }
 
@@ -273,7 +284,7 @@ data "aws_iam_policy_document" "codepipeline_policy" {
     ]
 
     resources = [
-      "arn:aws:iam::233907574649:role/service-role/AWSCodePipelineServiceRole-us-east-1-ardac-website-deployment"
+      aws_iam_role.codepipeline_role.arn
     ]
   }
 
@@ -285,7 +296,7 @@ data "aws_iam_policy_document" "codepipeline_policy" {
     ]
 
     resources = [
-      "arn:aws:cloudfront::233907574649:distribution/E1KF7QAITES16S"
+      data.aws_cloudfront_distribution.distribution.arn
     ]
   }
 }
@@ -317,7 +328,7 @@ resource "aws_codepipeline" "codepipeline" {
   execution_mode = "QUEUED"
 
   artifact_store {
-    location = aws_s3_bucket.codepipeline_bucket.bucket
+    location = aws_s3_bucket.codepipeline_bucket.id
     type     = "S3"
   }
 
@@ -377,6 +388,24 @@ resource "aws_codepipeline" "codepipeline" {
       configuration = {
         BucketName = "ardac.org"
         Extract    = "true"
+      }
+    }
+  }
+
+  stage {
+    name = "Invalidate"
+
+    action {
+      name            = "Invalidate"
+      namespace       = "InvalidateVariables"
+      category        = "Build"
+      owner           = "AWS"
+      provider        = "CodeBuild"
+      version         = "1"
+      input_artifacts = ["BuildArtifact"]
+
+      configuration = {
+        ProjectName = aws_codebuild_project.ardac_website_invalidation.name
       }
     }
   }

@@ -8,3 +8,4 @@ website_build_project      = "ardac-website-deployment"            #Name of the 
 invalidation_build_project = "ardac-website-invalidation"          #Name of the CodeBuild project to clear the CloudFront cache
 repository                 = "Su-informatics-lab/ardac-website"    #Name of the GitHub repository (org/repo)
 codestar                   = "mycodestar"                          #Name of the CodeStar connection
+website_bucket             = "ardac.org"                           #Name of the S3 bucket for the website

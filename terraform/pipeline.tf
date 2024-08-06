@@ -2,6 +2,10 @@ data "aws_cloudfront_distribution" "distribution" {
   id = var.distribution
 }
 
+data "aws_s3_bucket" "website_bucket" {
+  bucket = var.website_bucket
+}
+
 data "aws_iam_policy_document" "codebuild" {
   statement {
     effect = "Allow"
@@ -247,7 +251,8 @@ data "aws_iam_policy_document" "codepipeline_policy" {
     ]
 
     resources = [
-      "${aws_s3_bucket.codepipeline_bucket.arn}/*"
+      "${aws_s3_bucket.codepipeline_bucket.arn}/*",
+      "${data.aws_s3_bucket.website_bucket.arn}/*"
     ]
   }
 
@@ -298,6 +303,15 @@ data "aws_iam_policy_document" "codepipeline_policy" {
     resources = [
       data.aws_cloudfront_distribution.distribution.arn
     ]
+  }
+  statement {
+    actions = [
+      "codestar-connections:UseConnection"
+    ]
+    resources = [
+      aws_codestarconnections_connection.source_connection.arn
+    ]
+    effect = "Allow"
   }
 }
 

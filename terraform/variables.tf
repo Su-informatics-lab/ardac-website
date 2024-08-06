@@ -47,3 +47,8 @@ variable "codestar" {
   description = "Name of the CodeStar connection"
   type        = string
 }
+
+variable "website_bucket" {
+  description = "Name of the S3 bucket for the website"
+  type        = string
+}

@@ -1,521 +1,397 @@
-<html>
+<!doctype html>
+<html lang="en">
 
 <head>
-    <meta http-equiv=Content-Type content="text/html; charset=windows-1252">
-    <meta name=Generator content="Microsoft Word 15 (filtered)">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-    html, body {
-    height: 100%;
-    margin: 1vw 5vw 5vw 5vw;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-img {
-    padding: 0;
-    display: block;
-    margin: 15px auto;
-    max-height: 100%;
-    max-width: 100%;
-}
-
-p {
-    /*text-indent: 2em;*/
-    margin-bottom: 1em;
-}
-
-a {
-    text-decoration: none;
-    font-family:"Calibri",sans-serif;
-    color:black;
-}
-<!--
- /* Font Definitions */
-@font-face
-	{font-family:Wingdings;
-	panose-1:5 0 0 0 0 0 0 0 0 0;}
-@font-face
-	{font-family:"Cambria Math";
-	panose-1:2 4 5 3 5 4 6 3 2 4;}
-@font-face
-	{font-family:Calibri;
-	panose-1:2 15 5 2 2 2 4 3 2 4;}
-@font-face
-	{font-family:"Segoe UI";
-	panose-1:2 11 5 2 4 2 4 2 2 3;}
- /* Style Definitions */
- p.MsoNormal, li.MsoNormal, div.MsoNormal
-	{margin-top:0in;
-	margin-right:0in;
-	margin-bottom:8.0pt;
-	margin-left:0in;
-	line-height:130%;
-	font-size:14.0pt;
-	font-family:"Calibri",sans-serif;}
-.MsoChpDefault
-	{font-family:"Calibri",sans-serif;}
-.MsoPapDefault
-	{margin-bottom:8.0pt;
-	line-height:107%;}
-@page WordSection1
-	{size:8.5in 11.0in;
-	margin:1.0in 1.0in 1.0in 1.0in;}
-div.WordSection1
-	{page:WordSection1;}
- /* List Definitions */
-    ol {margin-bottom:0in;}
-    ul {margin-bottom:0in;}
--->
-    .navigation-item-txt {
-        margin-right: 2vw;
-        cursor: pointer;
-        font-size: 18px;
-        color: darkred;
-        font-weight: bold;
-    }
-    .navigation-item-txt:hover {
-        color: grey;
-        /*text-decoration: underline;*/
-    }
-
-    .nav-mobile-icon {
-        display: none;
-    }
-    .navigation-item-container {
-        display: flex;
-        flex-direction: row;
-    }
-
-    @media screen and (max-width: 768px) {
-        .nav-mobile-icon {
-            display: block;
-            cursor: pointer;
-            font-size: 18px;
-            color: darkred;
-            font-weight: bold;
-            font-family:"Calibri",sans-serif;
-        }
-        .navigation-item-container {
-            display: none;
-            background-color: rgba(255, 255, 255, 0.75);
-            position: fixed;
-            top: 10vh;
-            left: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
-            z-index: 1000;
-            padding: 5px;
-        }
-        .navigation-item-txt {
-            font-size: 16px;
-            margin-right: 1vw;
-            /*margin-bottom: 1vw;*/
-            /*padding: 3px 0;*/
-            color: darkred;
-        }
-
-        .readMore {
-            display: inline;
-            color: blue;
-            cursor: pointer;
-        }
-    }
-
-    @media screen and (min-width: 768px) {
-        .readMore {
-            display: none;
-        }
-
-        .moreText {
-            display: inline;
-        }
-
-        .navigation-item-container {
-            display: flex;
-            flex-direction: row;
-        }
-        .nav-mobile-icon {
-            display: none;
-        }
-    }
-</style>
-
-
-
+    <title>ARDaC &mdash; Alcohol Research Data Commons</title>
+    <link rel="icon" href="index_files/Logo_ARDac_4_Edit_1.png">
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <link href="main.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
-<body lang=EN-US style='word-wrap:break-word'>
+<body>
 
-<div class="navigation-bar-container"
-     style='padding:.5em;height:10vh;width:100vw;margin-bottom:12.0pt;background:
-white;position:fixed;top:0;display:flex;align-items: center'>
-    <div class="navigation-bar-logo"
-         style='width:20%;height:100%;margin-right:1vw;line-height: 10vh;display:flex;align-items: center'
-    >
-        <a href="#ARDaC">
-            <img style="margin:0;max-width:100%;height:auto" src="index_files/Logo_ARDac_4_Edit_1.png">
+<nav class="navbar navbar-expand-md">
+    <div class="logo-row">
+        <a class="navbar-brand" href="#ARDaC">
+            <img src="index_files/Logo_ARDac_4_Edit_1.png" alt="ARDaC Logo">
         </a>
     </div>
-    <div class="nav-mobile-icon">
-        <p>MENU</p>
-    </div>
-    <div class="navigation-item-container" style="line-height: 10vh">
-        <a href="#News" class="navigation-item-txt">News</a>
-        <a href="#Design" class="navigation-item-txt">Design</a>
-        <a href="#Functionalities" class="navigation-item-txt">Functionalities</a>
-        <a href="#Team" class="navigation-item-txt">Team</a>
-        <a href="#Publications" class="navigation-item-txt">Publications</a>
-        <a href="#Acknowledgements" class="navigation-item-txt">Acknowledgements</a>
-        <a href="#Contact" class="navigation-item-txt">Contact Us</a>
-    </div>
-</div>
 
-<div class="back-top-tag" style="position:fixed;top:50vh;right:0;border: darkred solid .1vw;padding:.2vw; border-radius:.2vw">
+    <div class="nav-row">
+        <div class="container nav-inner">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav"
+                    aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#News">News</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#Design">Design</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#Functionalities">Functionalities</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#Team">Team</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#Publications">Publications</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#Acknowledgements">Acknowledgements</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#Contact">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<main role="main">
+    <div class="hero-banner" id="ARDaC">
+        <div class="container">
+            <img src="index_files/image005.png" alt="ARDaC Banner">
+        </div>
+    </div>
+
+    <div class="container marketing">
+
+        <div class="row featurette">
+            <div class="col">
+                <p class="lead">
+                    The Alcoholic Hepatitis Network project, AlcHepNet
+                    (<a href="http://www.alchepnet.org/">http://www.alchepnet.org/</a>),
+                    is sponsored by the National Institute on Alcohol Abuse and Alcoholism (NIAAA).
+                    <span class="moreText">
+                        AlcHepNet aims to improve the treatment of alcohol-associated hepatitis, a leading cause of
+                        liver-related morbidity and mortality. The AlcHepNet consortium comprises six clinical study
+                        sites: Cleveland Clinic, Indiana University Clinical Center, Mayo Clinic Clinical Center,
+                        University of Louisville Clinical Center, UT Southwestern Medical Center, and Virginia
+                        Commonwealth University Clinical Center. The network is recruiting over 1,300 participants for
+                        clinical studies, following up with participants for 180 days, collecting more than 78,000
+                        blood, urine, saliva, and liver biopsy bio-samples, capturing demographic and behavioral
+                        features, clinical conditions, laboratory tests, treatments, and outcomes, and generating
+                        multiomics data from microbiome, immunologic, proteomic, metabolomic, lipidomic, and
+                        RNA/ChIP-sequencing analyses. The Indiana University Data Coordinating Center (IU DCC) provides
+                        the essential research infrastructure, including experimental design, study implementation,
+                        data management, and statistical analysis, in support of the network's primary studies and the
+                        translational projects that utilize biospecimens collected through those studies. To facilitate
+                        effective research use of the rich and complex AlcHepNet data, the IU DCC has developed
+                        <a href="http://portal.ardac.org/">ARDaC</a>, the Alcohol Research Data Commons, as the central
+                        data hub and research nexus
+                        (<a href="https://portal.ardac.org/">https://portal.ardac.org/</a>).
+                    </span>
+                    <a href="javascript:void(0);" class="readMore">... Read More</a>
+                </p>
+            </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette" id="News">
+            <div class="col">
+                <h2 class="featurette-heading">News</h2>
+                <div class="news-card">
+                    <h3>ARDaC Retreat 2026</h3>
+                    <p><strong>Time:</strong> March 23, 2026 8:30 AM &ndash; 8:00 PM</p>
+                    <p><strong>Locations:</strong></p>
+                    <ul>
+                        <li><strong>Morning Session:</strong> Fairbanks Hall, Room 5005, 340 W. 10th Street,
+                            Indianapolis, IN 46202</li>
+                        <li><strong>Afternoon Session:</strong> Health Information and Translational Sciences Building
+                            (HITS), Room 2070, 410 W. 10th Street, Indianapolis, IN 46202</li>
+                    </ul>
+                    <p>
+                        <strong>Agenda:</strong>
+                        <a class="agenda-link"
+                           href="files/Final%20ARDaC%202026%20Annual%20Retreat%20Agenda.pdf" target="_blank"
+                           rel="noopener">Download Agenda (PDF)</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette" id="Design">
+            <div class="col">
+                <h2 class="featurette-heading">Design of ARDaC</h2>
+                <p class="lead">The architecture of the ARDaC system is composed of the following components:</p>
+                <ol>
+                    <li>
+                        The ARDaC Data Warehouse. The heterogeneous clinical data, biosample information, and omics
+                        data information will be extracted from the randomized clinical trial and other
+                        alcohol-associated hepatitis (AH) research projects,
+                        <span class="moreText">
+                            standardized according to the ARDaC Data Standard, harmonized according to the ARDaC Common
+                            Data Model, and hosted in a central ARDaC Data Warehouse. Specifically, the novel ARDaC
+                            Common Data Model is derived from and compatible with the Genomics Data Common (GDC) Data
+                            Model and is compliant with the FAIR Principles so that AlcHepNet multimodal data will be
+                            findable, accessible, interoperable, and reusable. The ARDaC Data Warehouse is the data
+                            source for the ARDaC web application, which is open to the public, as well as for regular
+                            reporting and customized services within the AlcHepNet consortium. A graph-based provenance
+                            model is used for comprehensive data dependency and version control. The ARDaC digital
+                            entities, including the standards, data model, data, metadata, scripts, and codes, are
+                            attributable, trackable, and reproducible.
+                        </span>
+                        <a href="javascript:void(0);" class="readMore">... Read More</a>
+                    </li>
+                    <li>
+                        The ARDaC web application. The ARDaC system uses the Gen3 data common framework, which is
+                        widely used in NIH-sponsored projects.
+                        <span class="moreText">
+                            At the data layer, the standardized and harmonized data is extracted from the ARDaC Data
+                            Warehouse and injected into the ARDaC Staging Data Warehouse according to the ARDaC Graph
+                            Data Model. In the middleware layer, based on the user's input of the filtering criteria,
+                            the graph-based data is queried using GraphQL through the elastic search engine, analyzed
+                            with Python, and delivered interactively to users using the JavaScript-based react and
+                            Storybook libraries. The ARDaC web application is containerized as a series of images, each
+                            providing a specific service. The ARDaC system can be deployed to the AWS cloud services
+                            through the Kubernetes platform or to a dedicated server through the Docker platform. By
+                            leveraging the GDC common data model and the Gen3 data commons ecosystem, ARDaC enables
+                            data integration with other NIH-funded data commons, delivering a broad impact of
+                            AlcHepNet research and data to other research communities.
+                        </span>
+                        <a href="javascript:void(0);" class="readMore">... Read More</a>
+                    </li>
+                </ol>
+                <img src="index_files/image001.png" alt="ARDaC Architecture">
+            </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette" id="Functionalities">
+            <div class="col">
+                <h2 class="featurette-heading">Functionalities</h2>
+                <p class="lead">
+                    The novel ARDaC system supports the representation of behavioral and pathologic data unique to
+                    alcoholic hepatitis and facilitates data filtering, querying, visualization, and exploring,
+                    <span class="moreText">
+                        which are specific to the AlcHepNet clinical studies. Besides the general data query and
+                        visualization functions, ARDaC allows data exploration using study-related criteria such as
+                        the study cohorts or arms, alcohol use history, alcoholic hepatitis treatments, treatment
+                        outcomes such as mortality and liver transplantations, and liver function measures as well as
+                        prognostic metrics such as the MELD scores, omics data availability and biosample availability,
+                        and omics-derived features such as differentially expressed genes and enriched signaling
+                        pathways. The ARDaC system also provides a GraphQL query interface, a cloud-based workspace,
+                        and R and Python programming environments for in-depth data analysis. Specifically, ARDaC
+                        allows users to check sample availability, visualize and evaluate the synergy of their data
+                        generation plans with existing data and funded projects, and plan for new data generation
+                        plans. The ARDaC system is available at
+                        <a href="https://github.com/Su-informatics-lab/ardac">github.com/Su-informatics-lab/ardac</a>
+                        and <a href="http://www.ardac.org">ardac.org</a>.
+                    </span>
+                    <a href="javascript:void(0);" class="readMore">... Read More</a>
+                </p>
+
+                <a href="https://github.com/jing-su/ardac/blob/master/ARDaC_VersionControl.png" target="_blank"
+                   rel="noopener">
+                    <img src="index_files/image002.png" alt="ARDaC Data Flow and Version Control">
+                </a>
+                <a href="https://github.com/jing-su/ardac/blob/master/ARDaC_DataModel.png" target="_blank"
+                   rel="noopener">
+                    <img src="index_files/image003.png" alt="ARDaC Data Model">
+                </a>
+                <a href="https://github.com/jing-su/ardac/blob/master/ARDaC_Filtering_Vis_Exporting.png" target="_blank"
+                   rel="noopener">
+                    <img src="index_files/image004.png" alt="ARDaC Interface Example">
+                </a>
+                <img src="index_files/image006.png" alt="ARDaC Overview">
+
+                <p>
+                    In summary, ARDaC is the central data hub connecting data of multiple modalities across clinical
+                    and translational teams. It is the engine that drives AlcHepNet research projects, the data
+                    interface between the AlcHepNet consortium and other research data commons, and the research
+                    nexus that ignites new research and collaborations.
+                </p>
+            </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette" id="Team">
+            <div class="col">
+                <h2 class="featurette-heading">Team</h2>
+                <p class="lead">The team at Biostatistics and Health Data Science, Indiana University School of
+                    Medicine.</p>
+
+                <div class="team-group">
+                    <h4>PIs</h4>
+                    <ul>
+                        <li>Wanzhu Tu, PhD</li>
+                        <li>Samer Gawrieh, MD</li>
+                        <li>Jing Su, PhD</li>
+                    </ul>
+                </div>
+
+                <div class="team-group">
+                    <h4>Data modeling and harmonization</h4>
+                    <ul>
+                        <li>Carla Kettler, Principal Data Manager</li>
+                        <li>Nanxin Jin, PhD Research Assistant</li>
+                        <li>Ronny Ovando, Senior Data Manager</li>
+                        <li>Timothy Hotchkiss, Senior Data Manager II</li>
+                        <li>George Nitsos, Security Analyst</li>
+                    </ul>
+                </div>
+
+                <div class="team-group">
+                    <h4>System development</h4>
+                    <ul>
+                        <li>Nanxin Jin, PhD Research Assistant</li>
+                    </ul>
+                </div>
+
+                <div class="team-group">
+                    <h4>Information Technology (IT) support</h4>
+                    <ul>
+                        <li>Esen Tuna, Research Data Services</li>
+                        <li>Alan Walsh, Research Data Services</li>
+                        <li>Guangchen Ruan, Research Data Services</li>
+                        <li>James McCombs, Research Data Services</li>
+                        <li>Amy Burns, Enterprise Systems</li>
+                        <li>Philip Berg, Enterprise Systems</li>
+                    </ul>
+                </div>
+
+                <div class="team-group">
+                    <h4>Visualization</h4>
+                    <ul>
+                        <li>Zuotian Li, PhD Research Assistant</li>
+                        <li>Hao Wang, PhD Research Assistant</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette" id="Publications">
+            <div class="col">
+                <h2 class="featurette-heading">Publications</h2>
+                <ul class="pub-list">
+                    <li>
+                        N Jin, Z Li, C Kettler, B Yang, W Tu, J Su, "ARDaC Common Data Model Facilitates Data
+                        Dissemination and Enables Data Commons for Modern Clinical Studies." Studies in Health
+                        Technology and Informatics. 310:3-7 (<strong>2024</strong>). doi: 10.3233/SHTI230916.
+                        PMID: 38269754.
+                        <a href="https://pubmed.ncbi.nlm.nih.gov/38269754/">https://pubmed.ncbi.nlm.nih.gov/38269754/</a>
+                    </li>
+                    <li>
+                        Li, Zuotian, Xiang Liu, Zelei Cheng, Yingjie Chen, Wanzhu Tu, and Jing Su. "TrialView: An
+                        AI-powered Visual Analytics System for Temporal Event Data in Clinical Trials." arXiv preprint
+                        arXiv:2310.04586 (<strong>2023</strong>).
+                        <a href="https://arxiv.org/abs/2310.04586">https://arxiv.org/abs/2310.04586</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette" id="Acknowledgements">
+            <div class="col">
+                <h2 class="featurette-heading">Acknowledgements</h2>
+                <div class="ack-logos">
+                    <a href="http://www.alchepnet.org/" target="_blank" rel="noopener">
+                        <img src="index_files/Logo_AlcHepNet_4_Edit_2.png" alt="AlcHepNet">
+                    </a>
+                    <a href="https://www.niaaa.nih.gov/" target="_blank" rel="noopener">
+                        <img src="index_files/niaaa-logo.png" alt="NIAAA">
+                    </a>
+                    <a href="https://gen3.org/" target="_blank" rel="noopener">
+                        <img src="index_files/Logo_GEN3.png" alt="Gen3">
+                    </a>
+                    <a href="https://va.tech.purdue.edu/ivil/index.html" target="_blank" rel="noopener">
+                        <img src="index_files/Logo_PIVIL.png" alt="PIVIL">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette" id="Contact">
+            <div class="col contact-block">
+                <h2 class="featurette-heading">Contact Us</h2>
+                <p class="lead">If you have any questions, please feel free to reach out to us.</p>
+                <p>Email: <a href="mailto:ardac@iu.edu">ardac@iu.edu</a></p>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+<div class="back-top-tag">
     <a href="#ARDaC">Back to Top</a>
 </div>
 
-<div class=WordSection1>
-
-    <p class=MsoNormal style='padding-top:15vh;margin-top:-5vh;margin-bottom:12.0pt;background:white' id="ARDaC">
-        <img width=1000 height=auto src="index_files/image005.png" />
-    </p>
-
-<p class=MsoNormal style='margin-bottom:12.0pt;background:white'>
-    <span style='font-family:"Segoe UI",sans-serif;
-color:#24292F'>The Alcoholic Hepatitis Network project, AlcHepNet (<a
-            href="http://www.alchepnet.org/"><span
-            style='color:blue;text-decoration:none'>http://www.alchepnet.org/</span></a>), is sponsored by the National Institute on Alcohol Abuse and Alcoholism (NIAAA).
-        <span class="moreText" style="display: none;">
-            AlcHepNet aims to improve the treatment of alcohol-associated hepatitis, a leading cause of liver-related morbidity and mortality. The AlcHepNet consortium comprises six clinical study sites: Cleveland Clinic, Indiana University Clinical Center, Mayo Clinic Clinical Center, University of Louisville Clinical Center, UT Southwestern Medical Center, and Virginia Commonwealth University Clinical Center. The network is recruiting over 1,300 participants for clinical studies, following up with participants for 180 days, collecting more than 78,000 blood, urine, saliva, and liver biopsy bio-samples, capturing demographic and behavioral features, clinical conditions, laboratory tests, treatments, and outcomes, and generating multiomics data from microbiome, immunologic, proteomic, metabolomic, lipidomic, and RNA/ChIP-sequencing analyses. The Indiana University Data Coordinating Center (IU DCC) provides the essential research infrastructure, including experimental design, study implementation, data management, and statistical analysis, in support of the network's primary studies and the translational projects that utilize biospecimens collected through those studies. To facilitate effective research use of the rich and complex AlcHepNet data, the IU DCC has developed <a
-                href="http://portal.ardac.org/"><span
-                style='color:blue;text-decoration:none'>ARDaC</span></a> , the Alcohol Research Data Commons, as the central data hub and research nexus (<a
-                href="https://portal.ardac.org/"><span
-                style='color:blue;text-decoration:none'>https://portal.ardac.org/</span></a>).
-        </span>
-        <a href="javascript:void(0);" class="readMore" style="color: #8b0000;"> ... Read More</a>
-    </span>
-</p>
-
-<p id="News" class=MsoNormal style='padding-top:15vh;margin-top:-5vh;margin-bottom:12.0pt;
-margin-left:0in;background:white'><b><span style='font-size:
-24.0pt;font-family:"Segoe UI",sans-serif;color:#24292F'>News</span></b></p>
-
-<div style='margin-bottom:24.0pt;background:white;border-left:4px solid #8b0000;padding:16px 20px;'>
-    <p class=MsoNormal style='margin-bottom:8.0pt'><b><span style='font-size:18.0pt;font-family:"Segoe UI",sans-serif;color:#24292F'>ARDaC Retreat 2026</span></b></p>
-    <p class=MsoNormal style='margin-bottom:6.0pt'><b><span style='font-family:"Segoe UI",sans-serif;color:#24292F'>Time:</span></b><span style='font-family:"Segoe UI",sans-serif;color:#24292F'> March 23, 2026 8:30 AM – 8:00 PM</span></p>
-    <p class=MsoNormal style='margin-bottom:6.0pt'><b><span style='font-family:"Segoe UI",sans-serif;color:#24292F'>Locations:</span></b></p>
-    <ul type=disc style='margin-top:0'>
-        <li class=MsoNormal style='color:#24292F;background:white'><span style='font-family:"Segoe UI",sans-serif'><b>Morning Session:</b> Fairbanks Hall, Room 5005, 340 W. 10th Street, Indianapolis, IN 46202</span></li>
-        <li class=MsoNormal style='color:#24292F;margin-top:3.0pt;background:white'><span style='font-family:"Segoe UI",sans-serif'><b>Afternoon Session:</b> Health Information and Translational Sciences Building (HITS), Room 2070, 410 W. 10th Street, Indianapolis, IN 46202</span></li>
-    </ul>
-    <p class=MsoNormal style='margin-bottom:0'><b><span style='font-family:"Segoe UI",sans-serif;color:#24292F'>Agenda:</span></b><span style='font-family:"Segoe UI",sans-serif;color:#24292F'> </span><a href="files/Final%20ARDaC%202026%20Annual%20Retreat%20Agenda.pdf" target="_blank" style='font-family:"Segoe UI",sans-serif;color:#8b0000;text-decoration:none'>Download Agenda (PDF)</a></p>
-</div>
-
-<p id="Design" class=MsoNormal style='padding-top:15vh;margin-top:-5vh;margin-bottom:12.0pt;
-margin-left:0in;background:white'><b><span style='font-size:
-24.0pt;font-family:"Segoe UI",sans-serif;color:#24292F'>Design of ARDaC</span></b></p>
-
-<p class=MsoNormal style='margin-bottom:12.0pt;background:
-white'><span style='font-family:"Segoe UI",sans-serif;
-color:#24292F'>The architecture of the ARDaC system is composed of the following components:</span></p>
-
-<ol start=1 type=1>
- <li class=MsoNormal style='color:#24292F;background:white'>
-     <span style='font-family:"Segoe UI",sans-serif'>The ARDaC Data Warehouse. The heterogeneous clinical data, biosample information, and omics data information will be extracted from the randomized clinical trial and other alcohol-associated hepatitis (AH) research projects,
-         <span class="moreText" style="display: none;">
-             standardized according to the ARDaC Data Standard, harmonized according to the ARDaC Common Data Model, and hosted in a central ARDaC Data Warehouse. Specifically, the novel ARDaC Common Data Model is derived from and compatible with the Genomics Data Common (GDC)[1] Data Model and is compliant with the FAIR Principles[2] so that AlcHepNet multimodal data will be findable, accessible, interoperable, and reusable. The ARDaC Data Warehouse is the data source for the ARDaC web application, which is open to the public, as well as for regular reporting and customized services within the AlcHepNet consortium. A graph-based provenance model is used for comprehensive data dependency and version control. The ARDaC digital entities, including the standards, data model, data, metadata, scripts, and codes, are attributable, trackable, and reproducible.
-         </span>
-         <a href="javascript:void(0);" class="readMore" style="color: #8b0000;"> ... Read More</a>
-     </span>
- </li>
-
- <li class=MsoNormal style='color:#24292F;margin-top:3.0pt;
-     background:white'>
-     <span style='font-family:"Segoe UI",sans-serif'>The ARDaC web application. The ARDaC system uses the Gen3 data common framework, which is widely used in NIH-sponsored projects.
-        <span class="moreText" style="display: none;">
-        At the data layer, the standardized and harmonized data is extracted from the ARDaC Data Warehouse and injected into the ARDaC Staging Data Warehouse according to the ARDaC Graph Data Model. In the middleware layer, based on the user's input of the filtering criteria, the graph-based data is queried using GraphQL through the elastic search engine, analyzed with Python, and delivered interactively to users using the JavaScript-based react and Storybook libraries. The ARDaC web application is containerized as a series of images, each providing a specific service. The ARDaC system can be deployed to the AWS cloud services through the Kubernetes platform or to a dedicated server through the Docker platform. By leveraging the GDC common data model and the Gen3 data commons ecosystem, ARDaC enables data integration with other NIH-funded data commons, delivering a broad impact of AlcHepNet research and data to other research communities.
-        </span>
-         <a href="javascript:void(0);" class="readMore" style="color: #8b0000;"> ... Read More</a>
-     </span>
- </li>
-
-</ol>
-
-<!--    <p class=MsoNormal style='margin-bottom:12.0pt;background:white'>-->
-<!--        <img width=1000 height=auto src="index_files/image005.png" />-->
-<!--    </p>-->
-
-<p class=MsoNormal style='margin-bottom:12.0pt;background:white'>
-    <img src="index_files/image001.png" />
-</p>
-
-<p id="Functionalities" class=MsoNormal style='padding-top:15vh;margin-top:-5vh;margin-bottom:12.0pt;background:
-white'><b><span style='font-size:24.0pt;font-family:"Segoe UI",sans-serif;
-color:#24292F'>Functionalities</span></b></p>
-
-<p class=MsoNormal style='margin-bottom:12.0pt;background:
-white'>
-    <span style='font-family:"Segoe UI",sans-serif;
-color:#24292F'>The novel ARDaC system supports the representation of behavioral and pathologic data unique to alcoholic hepatitis and facilitates data filtering, querying, visualization, and exploring,
-        <span class="moreText" style="display: none;">
-             which are specific to the AlcHepNet clinical studies. Besides the general data query and visualization functions, ARDaC allows data exploration using study-related criteria such as the study cohorts or arms, alcohol use history, alcoholic hepatitis treatments, treatment outcomes such as mortality and liver transplantations, and liver function measures as well as prognostic metrics such as the MELD scores, omics data availability and biosample availability, and omics-derived features such as differentially expressed genes and enriched signaling pathways. The ARDaC system also provides a GraphQL query interface, a cloud-based workspace, and R and Python programming environments for in-depth data analysis. Specifically, ARDaC allows users to check sample availability, visualize and evaluate the synergy of their data generation plans with existing data and funded projects, and plan for new data generation plans. The ARDaC system is available at&nbsp;<a
-                href="https://github.com/Su-informatics-lab/ardac"><span
-                style='color:blue;text-decoration:none'>github.com/jing-su/ardac</span></a>&nbsp;and&nbsp;<a
-                href="http://www.ardac.org"><span
-                style='color:blue;text-decoration:none'>ardac.org</span></a>.
-        </span>
-        <a href="javascript:void(0);" class="readMore" style="color: #8b0000;"> ... Read More</a>
-    </span>
-</p>
-
-<p class=MsoNormal style='margin-bottom:12.0pt;background:
-white'><span style='color:black'><a
-href="https://github.com/jing-su/ardac/blob/master/ARDaC_VersionControl.png"
-target="_blank"><span style='font-family:"Segoe UI",sans-serif;
-color:blue;text-decoration:none'><img border=0 width=900 height=auto
-id="Picture 6" src="index_files/image002.png"
-alt="ARDaC Data Flow and Version Control"></span></a></span></p>
-
-<p class=MsoNormal style='margin-bottom:12.0pt;background:
-white'><span style='color:black'><a
-href="https://github.com/jing-su/ardac/blob/master/ARDaC_DataModel.png"
-target="_blank"><span style='font-family:"Segoe UI",sans-serif;
-color:blue;text-decoration:none'><img border=0 width=2000 height="auto"
-                                      id="Picture 7" src="index_files/image003.png" alt="ARDaC Data Model"></span></a></span></p>
-
-<p class=MsoNormal style='margin-bottom:12.0pt;background:
-white'><span style='color:black'><a
-href="https://github.com/jing-su/ardac/blob/master/ARDaC_Filtering_Vis_Exporting.png"
-target="_blank"><span style='font-family:"Segoe UI",sans-serif;
-color:blue;text-decoration:none'><img border=0 width=1700 height=auto
-                                      id="Picture 8" src="index_files/image004.png" alt="ARDaC Interface Example"></span></a></span></p>
-
-    <p class=MsoNormal style='margin-bottom:12.0pt;background:white'>
-        <img width=1100 height=auto src="index_files/image006.png" />
-    </p>
-
-<p class=MsoNormal style='margin-bottom:12.0pt;background:
-white'><span style='font-family:"Segoe UI",sans-serif;
-color:#24292F'>In summary, ARDaC is the central data hub connecting data of multiple modalities across clinical and translational teams. It is the engine that drives AlcHepNet research projects, the data interface between the AlcHepNet consortium and other research data commons, and the research nexus that ignites new research and collaborations.</span></p>
-
-<p id="Team" class=MsoNormal style='padding-top:15vh;margin-top:-5vh;margin-bottom:12.0pt;
-margin-left:0in;background:white'><b><span style='font-size:
-24.0pt;font-family:"Segoe UI",sans-serif;color:#24292F'>Team</span></b></p>
-
-<p class=MsoNormal style='margin-bottom:12.0pt;margin-left:0in;background:white'><span style='font-size:14pt;font-family:"Segoe UI",sans-serif;color:#24292F'>The team at Biostatistics and Health Data Science, Indiana University School of Medicine</span></p>
-
-<p class=MsoNormal style='margin-top:.25in;margin-right:0in;margin-bottom:12.0pt;
-margin-left:0in;background:white'><b><span style='font-size:
-18.0pt;font-family:"Segoe UI",sans-serif;color:#24292F'>PIs:</span></b></p>
-
-<ul type=disc>
- <li class=MsoNormal style='color:#24292F;background:white'><span
-     style='font-family:"Segoe UI",sans-serif'>Wanzhu Tu, PhD</span></li>
- <li class=MsoNormal style='color:#24292F;margin-top:3.0pt;
-     background:white'><span style='font-family:"Segoe UI",sans-serif'>Samer Gawrieh, MD</span></li>
- <li class=MsoNormal style='color:#24292F;margin-top:3.0pt;
-     background:white'><span style='font-family:"Segoe UI",sans-serif'>Jing Su, PhD</span></li>
-</ul>
-
-<p class=MsoNormal style='margin-top:.25in;margin-right:0in;margin-bottom:12.0pt;
-margin-left:0in;background:white'><b><span style='font-size:
-18.0pt;font-family:"Segoe UI",sans-serif;color:#24292F'>Data modeling and harmonization</span></b></p>
-
-<ul type=disc>
- <li class=MsoNormal style='color:#24292F;margin-top:3.0pt;
-     background:white'><span style='font-family:"Segoe UI",sans-serif'>Carla Kettler, Principal Data Manager</span></li>
-    <li class=MsoNormal style='color:#24292F;margin-top:3.0pt;
-     background:white'><span style='font-family:"Segoe UI",sans-serif'>Nanxin Jin, PhD Research Assistant</span></li>
- <li class=MsoNormal style='color:#24292F;margin-top:3.0pt;
-     background:white'><span style='font-family:"Segoe UI",sans-serif'>Ronny Ovando, Senior Data Manager</span></li>
- <li class=MsoNormal style='color:#24292F;margin-top:3.0pt;
-     background:white'><span style='font-family:"Segoe UI",sans-serif'>Timothy Hotchkiss, Senior Data Manager II</span></li>
-    <li class=MsoNormal style='color:#24292F;margin-top:3.0pt;
-     background:white'><span style='font-family:"Segoe UI",sans-serif'>George Nitsos, Security Analyst</span></li>
-</ul>
-
-<p class=MsoNormal style='margin-top:.25in;margin-right:0in;margin-bottom:12.0pt;
-margin-left:0in;background:white'><b><span style='font-size:
-18.0pt;font-family:"Segoe UI",sans-serif;color:#24292F'>System development</span></b></p>
-
-<ul type=disc>
- <li class=MsoNormal style='color:#24292F;margin-top:3.0pt;
-     background:white'><span style='font-family:"Segoe UI",sans-serif'>Nanxin Jin, PhD Research Assistant</span></li>
-</ul>
-
-<!--add Information Technology (IT) support   -->
-    <p class=MsoNormal style='margin-top:.25in;margin-right:0in;margin-bottom:12.0pt;
-margin-left:0in;background:white'><b><span style='font-size:
-18.0pt;font-family:"Segoe UI",sans-serif;color:#24292F'>Information Technology (IT) support</span></b></p>
-
-    <ul type=disc>
-        <li class=MsoNormal style='color:#24292F;background:white'><span style='font-family:"Segoe UI",sans-serif'>Esen Tuna, Research Data Services</span></li>
-        <li class=MsoNormal style='color:#24292F;margin-top:3.0pt;
-     background:white'><span style='font-family:"Segoe UI",sans-serif'>Alan Walsh, Research Data Services</span></li>
-        <li class=MsoNormal style='color:#24292F;margin-top:3.0pt;
-     background:white'><span style='font-family:"Segoe UI",sans-serif'>Guangchen Ruan, Research Data Services</span></li>
-        <li class=MsoNormal style='color:#24292F;margin-top:3.0pt;
-     background:white'><span style='font-family:"Segoe UI",sans-serif'>James McCombs, Research Data Services</span></li>
-        <li class=MsoNormal style='color:#24292F;margin-top:3.0pt;
-     background:white'><span style='font-family:"Segoe UI",sans-serif'>Amy Burns, Enterprise Systems</span></li>
-        <li class=MsoNormal style='color:#24292F;margin-top:3.0pt;
-     background:white'><span style='font-family:"Segoe UI",sans-serif'>Philip Berg, Enterprise Systems</span></li>
-    </ul>
-
-<p class=MsoNormal style='margin-top:.25in;margin-right:0in;margin-bottom:12.0pt;
-margin-left:0in;background:white'><b><span style='font-size:
-18.0pt;font-family:"Segoe UI",sans-serif;color:#24292F'>Visualization</span></b></p>
-    <ul type=disc>
-        <li class=MsoNormal style='color:#24292F;background:white'><span
-                style='font-family:"Segoe UI",sans-serif'>Zuotian Li, PhD Research Assistant</span></li>
-        <li class=MsoNormal style='color:#24292F;margin-top:3.0pt;
-     background:white'><span style='font-family:"Segoe UI",sans-serif'>Hao Wang, PhD Research Assistant</span></li>
-    </ul>
-
-    <p id="Publications" class=MsoNormal style='padding-top:15vh;margin-top:-5vh;margin-bottom:12.0pt;
-margin-left:0in;background:white'><b><span style='font-size:
-24.0pt;font-family:"Segoe UI",sans-serif;color:#24292F'>Publications</span></b></p>
-    <ul type=disc>
-        <li class=MsoNormal style='color:#24292F;background:white'><span
-                style='font-family:"Segoe UI",sans-serif'>N Jin, Z Li, C Kettler, B Yang, W Tu, J Su, "ARDaC Common Data Model Facilitates Data Dissemination and Enables Data Commons for Modern Clinical Studies." Studies in Health Technology and Informatics. 310:3-7(<b>2024</b>). doi: 10.3233/SHTI230916. PMID: 38269754.
-            <a href="https://pubmed.ncbi.nlm.nih.gov/38269754/"><span
-                    style='color:blue;text-decoration:none'>https://pubmed.ncbi.nlm.nih.gov/38269754/</span></a>
-            </span></li>
-
-        <li class=MsoNormal style='color:#24292F;margin-top:3.0pt; background:white'><span style='font-family:"Segoe UI",sans-serif'>Li, Zuotian, Xiang Liu, Zelei Cheng, Yingjie Chen, Wanzhu Tu, and Jing Su. "TrialView: An AI-powered Visual Analytics System for Temporal Event Data in Clinical Trials." arXiv preprint arXiv:2310.04586 (<b>2023</b>).
-           <a href="https://arxiv.org/abs/2310.04586"><span
-                   style='color:blue;text-decoration:none'>https://arxiv.org/abs/2310.04586</span></a>
-            </span></li>
-    </ul>
-
-<!--<p class=MsoNormal>&nbsp;</p>-->
-    <p id="Acknowledgements" class=MsoNormal style='padding-top:15vh;margin-top:-5vh;margin-bottom:12.0pt;
-margin-left:0in;background:white'><b><span style='font-size:
-24.0pt;font-family:"Segoe UI",sans-serif;color:#24292F'>Acknowledgements</span></b></p>
-    <ul type=disc>
-        <a href="http://www.alchepnet.org/" target="_blank" style="text-decoration: none; color: inherit;">
-            <div style="display: flex; align-items: center; margin:10px;">
-                <img src="index_files/Logo_AlcHepNet_4_Edit_2.png" alt="AIcHepNet" style="margin-right:10px;margin:0;max-width:100%;height:3vw">
-<!--                <div>AIcHepNet</div>-->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <h5>Explore</h5>
+                <ul>
+                    <li><a href="#News">News</a></li>
+                    <li><a href="#Design">Design</a></li>
+                    <li><a href="#Functionalities">Functionalities</a></li>
+                    <li><a href="#Team">Team</a></li>
+                    <li><a href="#Publications">Publications</a></li>
+                    <li><a href="#Contact">Contact</a></li>
+                </ul>
             </div>
-        </a>
-        <a href="https://www.niaaa.nih.gov/" target="_blank" style="text-decoration: none; color: inherit;">
-            <div style="display: flex; align-items: center; margin:10px;">
-                <img src="index_files/niaaa-logo.png" alt="AIcHepNet" style="margin-right:10px;margin:0;max-width:100%;height:3vw">
-<!--                <div>NIAAA</div>-->
+
+            <div class="col-md-4 mb-4">
+                <h5>Quick Links</h5>
+                <ul>
+                    <li><a href="https://portal.ardac.org/" target="_blank" rel="noopener">ARDaC Portal</a></li>
+                    <li><a href="http://www.alchepnet.org/" target="_blank" rel="noopener">AlcHepNet</a></li>
+                    <li><a href="https://www.niaaa.nih.gov/" target="_blank" rel="noopener">NIAAA</a></li>
+                    <li><a href="https://github.com/Su-informatics-lab/ardac" target="_blank" rel="noopener">GitHub</a></li>
+                </ul>
             </div>
-        </a>
-        <a href="https://gen3.org/" target="_blank" style="text-decoration: none; color: inherit;">
-            <div style="display: flex; align-items: center; margin:10px;">
-                <img src="index_files/Logo_GEN3.png" alt="GEN3" style="margin-right:10px;margin:0;max-width:100%;height:3vw">
-<!--                <div>GEN3</div>-->
+
+            <div class="col-md-4 mb-4">
+                <h5>Contact</h5>
+                <ul>
+                    <li><a href="mailto:ardac@iu.edu">ardac@iu.edu</a></li>
+                </ul>
             </div>
-        </a>
-        <a href="https://va.tech.purdue.edu/ivil/index.html" target="_blank" style="text-decoration: none; color: inherit;">
-            <div style="display: flex; align-items: center; margin:10px;">
-                <img src="index_files/Logo_PIVIL.png" alt="PIVIL" style="margin-right:10px;margin:0;max-width:100%;height:3vw">
-<!--                <div>PIVIL</div>-->
+        </div>
+
+        <hr>
+
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <p class="copyright">&copy; 2023&ndash;2026 ARDaC</p>
             </div>
-        </a>
-
-    </ul>
-
-    <p id="Contact" class=MsoNormal style='padding-top:15vh;margin-top:-5vh;margin-bottom:12.0pt;
-margin-left:0in;background:white'><b><span style='font-size:
-24.0pt;font-family:"Segoe UI",sans-serif;color:#24292F'>Contact Us</span></b></p>
-    <p style='font-family:"Segoe UI",sans-serif'>If you have any questions, please feel free to reach out to us.</p>
-    <p style='font-family:"Segoe UI",sans-serif'>Email: <a href="mailto:ardac@iu.edu" style="color: #8b0000; text-decoration: none;">ardac@iu.edu</a></p>
-
-
-</div>
-
-<hr>
-
-<div class="footer">
-    <div class="copyright" style='font-family:"Segoe UI",sans-serif'>
-        © 2023-2026 ARDaC
+            <div class="col-md-6 text-md-right">
+                <p class="copyright">Funded by the National Institute on Alcohol Abuse and Alcoholism (NIAAA)</p>
+            </div>
+        </div>
     </div>
-</div>
+</footer>
 
+<script src="popper.min.js"></script>
+<script src="bootstrap.min.js"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const mobileIcon = document.querySelector('.nav-mobile-icon');
-        const navigation = document.querySelector('.navigation-item-container');
-
-        // Toggle navigation display on mobile
-        mobileIcon.addEventListener('click', function() {
-            if (navigation.style.display === "none" || navigation.style.display === "") {
-                navigation.style.display = "flex";
-                navigation.style.flexDirection = "column";
+    $(function () {
+        // Read More toggle (only visible on mobile via CSS)
+        $('.readMore').on('click', function () {
+            var $more = $(this).prev('.moreText');
+            if ($more.is(':visible')) {
+                $more.hide();
+                $(this).text('... Read More');
             } else {
-                navigation.style.display = "none";
+                $more.show();
+                $(this).text(' Read Less');
             }
         });
 
-        // Hide navigation when clicking outside of it
-        // document.addEventListener('click', function(e) {
-        //     if (!navigation.contains(e.target) && !mobileIcon.contains(e.target) && navigation.style.display === "flex") {
-        //         navigation.style.display = "none";
-        //     }
-        // });
-        document.addEventListener('click', function(e) {
-            let isMobileView = window.innerWidth <= 768;
-            if (isMobileView && !navigation.contains(e.target) && !mobileIcon.contains(e.target) && navigation.style.display === "flex") {
-                navigation.style.display = "none";
+        // Collapse mobile nav after clicking an anchor
+        $('.navbar-nav .nav-link').on('click', function () {
+            if ($('.navbar-toggler').is(':visible')) {
+                $('#mainNav').collapse('hide');
             }
         });
-
-        // Read more buttons functionality
-        const readMoreButtons = document.querySelectorAll('.readMore');
-        readMoreButtons.forEach(function(btn) {
-            btn.onclick = function() {
-                let moreText = this.previousElementSibling;
-                if (moreText.style.display === "none") {
-                    moreText.style.display = "inline";
-                    this.textContent = "Read Less";
-                } else {
-                    moreText.style.display = "none";
-                    this.textContent = "Read More";
-                }
-            };
-        });
-
-        // Adjust text display based on screen size
-        function adjustTextDisplay() {
-            let screenWidth = window.innerWidth || document.documentElement.clientWidth;
-            let moreTexts = document.getElementsByClassName("moreText");
-            let readMoreBtns = document.getElementsByClassName("readMore");
-
-            for (let i = 0; i < moreTexts.length; i++) {
-                if (screenWidth >= 768) {
-                    moreTexts[i].style.display = "inline";
-                    readMoreBtns[i].style.display = "none";
-                } else {
-                    moreTexts[i].style.display = "none";
-                    readMoreBtns[i].style.display = "inline";
-                    readMoreBtns[i].textContent = "Read More";
-                }
-            }
-
-            // Ensure navigation is correctly displayed or hidden
-            if (screenWidth >= 768) {
-                navigation.style.display = "flex";
-                navigation.style.flexDirection = "row";
-                mobileIcon.style.display = "none";
-            } else {
-                mobileIcon.style.display = "block";
-                navigation.style.display = "none";
-            }
-        }
-
-        // Listen to resize events
-        window.addEventListener('resize', adjustTextDisplay);
-        adjustTextDisplay();  // Initial call to set up everything
     });
-
 </script>
 
 </body>
-
 </html>

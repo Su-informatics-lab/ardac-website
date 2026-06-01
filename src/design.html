@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ARDaC &mdash; Alcohol Research Data Commons</title>
+    <title>Design of ARDaC &mdash; ARDaC</title>
     <link rel="icon" href="index_files/Logo_ARDac_4_Edit_1.png">
     <link href="bootstrap.min.css" rel="stylesheet">
     <link href="main.css" rel="stylesheet">
@@ -30,7 +30,7 @@
             <div class="collapse navbar-collapse" id="mainNav">
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link" href="news.html">News</a></li>
-                    <li class="nav-item"><a class="nav-link" href="design.html">Design</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="design.html">Design</a></li>
                     <li class="nav-item"><a class="nav-link" href="functionalities.html">Functionalities</a></li>
                     <li class="nav-item"><a class="nav-link" href="team.html">Team</a></li>
                     <li class="nav-item"><a class="nav-link" href="publications.html">Publications</a></li>
@@ -43,59 +43,51 @@
 </nav>
 
 <main role="main">
-    <div class="hero-banner">
-        <div class="container">
-            <img src="index_files/image005.png" alt="ARDaC Banner">
-        </div>
-    </div>
-
     <div class="container marketing">
 
         <div class="row featurette">
             <div class="col">
-                <p class="lead">
-                    The Alcoholic Hepatitis Network project, AlcHepNet
-                    (<a href="http://www.alchepnet.org/">http://www.alchepnet.org/</a>),
-                    is sponsored by the National Institute on Alcohol Abuse and Alcoholism (NIAAA).
-                    <span class="moreText">
-                        AlcHepNet aims to improve the treatment of alcohol-associated hepatitis, a leading cause of
-                        liver-related morbidity and mortality. The AlcHepNet consortium comprises six clinical study
-                        sites: Cleveland Clinic, Indiana University Clinical Center, Mayo Clinic Clinical Center,
-                        University of Louisville Clinical Center, UT Southwestern Medical Center, and Virginia
-                        Commonwealth University Clinical Center. The network is recruiting over 1,300 participants for
-                        clinical studies, following up with participants for 180 days, collecting more than 78,000
-                        blood, urine, saliva, and liver biopsy bio-samples, capturing demographic and behavioral
-                        features, clinical conditions, laboratory tests, treatments, and outcomes, and generating
-                        multiomics data from microbiome, immunologic, proteomic, metabolomic, lipidomic, and
-                        RNA/ChIP-sequencing analyses. The Indiana University Data Coordinating Center (IU DCC) provides
-                        the essential research infrastructure, including experimental design, study implementation,
-                        data management, and statistical analysis, in support of the network's primary studies and the
-                        translational projects that utilize biospecimens collected through those studies. To facilitate
-                        effective research use of the rich and complex AlcHepNet data, the IU DCC has developed
-                        <a href="http://portal.ardac.org/">ARDaC</a>, the Alcohol Research Data Commons, as the central
-                        data hub and research nexus
-                        (<a href="https://portal.ardac.org/">https://portal.ardac.org/</a>).
-                    </span>
-                    <a href="javascript:void(0);" class="readMore">... Read More</a>
-                </p>
-            </div>
-        </div>
-
-        <hr class="featurette-divider">
-
-        <div class="row featurette">
-            <div class="col">
-                <h2 class="featurette-heading">News</h2>
-                <div class="news-card">
-                    <h3>New ARDaC Portal Release Now Available</h3>
-                    <p class="news-date">May 2026</p>
-                    <p>
-                        The ARDaC Portal has been updated with new data resources and features to support addiction
-                        research and data discovery. This release includes the addition of the TREAT study, newly
-                        available proteomics data, and the new Anagine Summary Report feature.
-                    </p>
-                </div>
-                <a class="more-link" href="news.html">See all News &rarr;</a>
+                <h2 class="featurette-heading">Design of ARDaC</h2>
+                <p class="lead">The architecture of the ARDaC system is composed of the following components:</p>
+                <ol>
+                    <li>
+                        The ARDaC Data Warehouse. The heterogeneous clinical data, biosample information, and omics
+                        data information will be extracted from the randomized clinical trial and other
+                        alcohol-associated hepatitis (AH) research projects,
+                        <span class="moreText">
+                            standardized according to the ARDaC Data Standard, harmonized according to the ARDaC Common
+                            Data Model, and hosted in a central ARDaC Data Warehouse. Specifically, the novel ARDaC
+                            Common Data Model is derived from and compatible with the Genomics Data Common (GDC) Data
+                            Model and is compliant with the FAIR Principles so that AlcHepNet multimodal data will be
+                            findable, accessible, interoperable, and reusable. The ARDaC Data Warehouse is the data
+                            source for the ARDaC web application, which is open to the public, as well as for regular
+                            reporting and customized services within the AlcHepNet consortium. A graph-based provenance
+                            model is used for comprehensive data dependency and version control. The ARDaC digital
+                            entities, including the standards, data model, data, metadata, scripts, and codes, are
+                            attributable, trackable, and reproducible.
+                        </span>
+                        <a href="javascript:void(0);" class="readMore">... Read More</a>
+                    </li>
+                    <li>
+                        The ARDaC web application. The ARDaC system uses the Gen3 data common framework, which is
+                        widely used in NIH-sponsored projects.
+                        <span class="moreText">
+                            At the data layer, the standardized and harmonized data is extracted from the ARDaC Data
+                            Warehouse and injected into the ARDaC Staging Data Warehouse according to the ARDaC Graph
+                            Data Model. In the middleware layer, based on the user's input of the filtering criteria,
+                            the graph-based data is queried using GraphQL through the elastic search engine, analyzed
+                            with Python, and delivered interactively to users using the JavaScript-based react and
+                            Storybook libraries. The ARDaC web application is containerized as a series of images, each
+                            providing a specific service. The ARDaC system can be deployed to the AWS cloud services
+                            through the Kubernetes platform or to a dedicated server through the Docker platform. By
+                            leveraging the GDC common data model and the Gen3 data commons ecosystem, ARDaC enables
+                            data integration with other NIH-funded data commons, delivering a broad impact of
+                            AlcHepNet research and data to other research communities.
+                        </span>
+                        <a href="javascript:void(0);" class="readMore">... Read More</a>
+                    </li>
+                </ol>
+                <img src="index_files/image001.png" alt="ARDaC Architecture">
             </div>
         </div>
 

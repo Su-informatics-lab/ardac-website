@@ -38,3 +38,5 @@ override.tf.json
 # Ignore CLI configuration files
 .terraformrc
 terraform.rc
+# Raw team photos and slides (web versions live in src/index_files/team)
+src/index_files/team_photos/

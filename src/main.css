@@ -429,6 +429,37 @@ h1, h2, h3, h4, h5, h6,
     line-height: 1.6;
 }
 
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.team-member {
+    margin: 0;
+    text-align: center;
+}
+
+.team-member img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 0.5rem;
+}
+
+.team-member figcaption strong {
+    display: block;
+    font-weight: 600;
+}
+
+.team-member figcaption span {
+    display: block;
+    font-size: 0.9rem;
+    color: #555;
+}
+
 /* PUBLICATIONS
 -------------------------------------------------- */
 .pub-list {

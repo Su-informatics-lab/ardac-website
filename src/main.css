@@ -274,6 +274,67 @@ h1, h2, h3, h4, h5, h6,
     text-decoration: underline;
 }
 
+.news-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.news-gallery img {
+    display: block;
+    margin: 0;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.news-gallery a:first-child {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.news-gallery a:first-child img {
+    height: 100%;
+    aspect-ratio: auto;
+}
+
+.news-lightbox {
+    padding: 0;
+    border: none;
+    background: transparent;
+    max-width: 95vw;
+    max-height: 95vh;
+    overflow: visible;
+}
+
+.news-lightbox::backdrop {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.news-lightbox img {
+    display: block;
+    max-width: 95vw;
+    max-height: 95vh;
+    border-radius: 4px;
+}
+
+.news-lightbox-close {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: none;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.6);
+    color: #ffffff;
+    font-size: 1.75rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
 /* NEWS TIMELINE
 -------------------------------------------------- */
 .news-toolbar {

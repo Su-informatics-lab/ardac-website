@@ -31,6 +31,22 @@ $(function () {
     });
     $newsItems.on('toggle', syncNewsToggleLabel);
 
+    var newsLightbox = document.querySelector('.news-lightbox');
+    if (newsLightbox && newsLightbox.showModal) {
+        $('.news-gallery a').on('click', function (e) {
+            e.preventDefault();
+            var $thumb = $(this).find('img');
+            $(newsLightbox).find('img').attr({ src: this.href, alt: $thumb.attr('alt') });
+            newsLightbox.showModal();
+        });
+        // A click on the image itself keeps the popup open; the backdrop and the X close it
+        $(newsLightbox).on('click', function (e) {
+            if (e.target.tagName !== 'IMG') {
+                newsLightbox.close();
+            }
+        });
+    }
+
     // Smooth scroll to top for the Back to Top tag
     $('.back-top-tag a').on('click', function (e) {
         e.preventDefault();
